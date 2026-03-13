@@ -8,14 +8,13 @@ import interfaces.Reproducible;
 import model.Cancion;
 import java.io.File;
 import javax.swing.JOptionPane;
-// Importaciones de JavaFX
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.embed.swing.JFXPanel;
 
 public class ReproductorAudio extends Reproductor {
     private MediaPlayer mediaPlayer;
-    // Esta variable inicializa JavaFX internamente. Es necesaria una sola vez.
+
     private static boolean javaFXIniciado = false;
 
     public ReproductorAudio() {
@@ -25,7 +24,7 @@ public class ReproductorAudio extends Reproductor {
     private synchronized void iniciarJavaFX() {
         if (!javaFXIniciado) {
             try {
-                new JFXPanel(); // Inicia el entorno JavaFX
+                new JFXPanel(); 
                 javaFXIniciado = true;
             } catch (Exception e) {
                 System.err.println("Error iniciando JavaFX: " + e.getMessage());
@@ -41,13 +40,13 @@ public class ReproductorAudio extends Reproductor {
         }
         
         try {
-            // Si ya está pausado, reanudar
+     
             if (mediaPlayer != null && mediaPlayer.getStatus() == MediaPlayer.Status.PAUSED) {
                 mediaPlayer.play();
                 return;
             }
 
-            // Detener cualquier reproducción anterior
+
             stop();
 
             File file = new File(actual.getRutaCancion());
@@ -56,7 +55,6 @@ public class ReproductorAudio extends Reproductor {
                 return;
             }
 
-            // JavaFX necesita URI para leer rutas con espacios o caracteres especiales
             Media media = new Media(file.toURI().toString());
             mediaPlayer = new MediaPlayer(media);
             mediaPlayer.play();

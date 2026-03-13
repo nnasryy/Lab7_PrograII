@@ -38,7 +38,7 @@ public class VentanaPrincipal extends JFrame {
         setLayout(new BorderLayout(15, 15));
         ((JPanel)getContentPane()).setBorder(new EmptyBorder(20, 20, 20, 20));
 
-        // --- LISTA DE REPRODUCCIÓN (IZQUIERDA) ---
+
         modelo = new DefaultListModel<>();
         lista = new JList<>(modelo);
         lista.setBackground(purpuraGris);
@@ -52,7 +52,7 @@ public class VentanaPrincipal extends JFrame {
         scroll.setPreferredSize(new Dimension(220, 0));
         add(scroll, BorderLayout.WEST);
 
-        // --- PANEL CENTRAL (VISUALIZER / IMAGEN) ---
+
         JPanel panelCentro = new JPanel(new BorderLayout(10, 10));
         panelCentro.setOpaque(false);
         
@@ -71,8 +71,7 @@ public class VentanaPrincipal extends JFrame {
         
         add(panelCentro, BorderLayout.CENTER);
 
-        // --- PANEL DE BOTONES (SUR) ---
-        // Usamos un GridLayout de 2 filas para que Add/Select/Remove queden arriba de Play/Pause/Stop
+    
         JPanel panelControlPadre = new JPanel(new GridLayout(2, 1, 10, 10));
         panelControlPadre.setOpaque(false);
 
@@ -98,7 +97,7 @@ public class VentanaPrincipal extends JFrame {
         panelControlPadre.add(fila2);
         add(panelControlPadre, BorderLayout.SOUTH);
 
-        // --- ASIGNACIÓN DE EVENTOS ---
+
         btnPlay.addActionListener(e -> controlador.accionPlay(lista.getSelectedIndex()));
         btnPause.addActionListener(e -> controlador.accionPause());
         btnStop.addActionListener(e -> controlador.accionStop());
@@ -107,7 +106,7 @@ public class VentanaPrincipal extends JFrame {
         btnRemove.addActionListener(e -> controlador.accionEliminar(lista.getSelectedIndex()));
     }
 
-    // Método para aplicar el estilo visual a los botones
+
     private JButton estiloBotonY2K(String texto, Color colorNeon) {
         JButton btn = new JButton(texto);
         btn.setBackground(fondoBase);
@@ -116,7 +115,7 @@ public class VentanaPrincipal extends JFrame {
         btn.setFont(new Font("Arial", Font.BOLD, 12));
         btn.setBorder(new LineBorder(colorNeon, 2));
         
-        // Efecto Hover
+
         btn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btn.setBackground(colorNeon);

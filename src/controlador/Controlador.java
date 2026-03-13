@@ -32,9 +32,8 @@ public class Controlador {
             return;
         }
         Cancion c = playlist.get(index);
-        vista.mostrarInfoCancion(c); // Muestra la imagen y datos
-        reproductor.setCancion(c);   // Prepara la canción
-        // No reproduce automáticamente, solo la selecciona
+        vista.mostrarInfoCancion(c); 
+        reproductor.setCancion(c);  
     }
 
     public void accionPlay(int index) {
@@ -43,7 +42,7 @@ public class Controlador {
             return;
         }
         
-        // Si no está cargada o es distinta, la cargamos
+
         Cancion c = playlist.get(index);
         if (c != null) {
             if (reproductor.getActual() == null || !reproductor.getActual().equals(c)) {
@@ -70,18 +69,13 @@ public class Controlador {
         
         if (fc.showOpenDialog(vista) == JFileChooser.APPROVE_OPTION) {
             File f = fc.getSelectedFile();
-            
-            // SOLICITUD DE DATOS PASO A PASO
-            
-            // 1. Nombre de la canción
+       
             String nombre = JOptionPane.showInputDialog(vista, "Nombre de la canción:", f.getName().replace(".mp3", ""));
             if (nombre == null || nombre.isEmpty()) return; // Canceló
-            
-            // 2. Artista
+     
             String artista = JOptionPane.showInputDialog(vista, "Artista:", "Desconocido");
             if (artista == null) return;
-            
-            // 3. Duración
+   
             String durStr = JOptionPane.showInputDialog(vista, "Duración (segundos):", "180");
             int dur = 180;
             try { 
@@ -90,13 +84,12 @@ public class Controlador {
                 dur = 180; 
             }
             
-            // 4. Género musical (Usando el Enum)
+        
             Object[] generos = Genero.values();
             Object sel = JOptionPane.showInputDialog(vista, "Seleccione Género Musical:", "Género", JOptionPane.QUESTION_MESSAGE, null, generos, generos[0]);
             if (sel == null) return;
             Genero gen = (Genero) sel;
-            
-            // 5. Imagen asociada
+         
             String rutaImg = "";
             int opt = JOptionPane.showConfirmDialog(vista, "¿Desea agregar una imagen de portada?", "Imagen", JOptionPane.YES_NO_OPTION);
             if (opt == JOptionPane.YES_OPTION) {
@@ -106,8 +99,7 @@ public class Controlador {
                     rutaImg = fcImg.getSelectedFile().getAbsolutePath();
                 }
             }
-            
-            // Guardar
+   
             Cancion nueva = new Cancion(nombre, artista, dur, gen, f.getAbsolutePath(), rutaImg);
             playlist.agregar(nueva);
             vista.actualizarLista(playlist.getLista());
@@ -121,7 +113,7 @@ public class Controlador {
         }
         
         Cancion c = playlist.get(index);
-        // Si la canción que se reproduce es eliminada, detener reproducción
+
         if (reproductor.getActual() != null && reproductor.getActual().equals(c)) {
             reproductor.stop();
         }

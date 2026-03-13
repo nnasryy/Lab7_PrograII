@@ -62,7 +62,7 @@ public class VentanaPrincipal extends JFrame {
         lblImagen.setForeground(neonRosa);
         lblImagen.setFont(new Font("SansSerif", Font.ITALIC, 24));
         
-        lblInfo = new JLabel("READY TO VIBE", SwingConstants.CENTER);
+        lblInfo = new JLabel("𝄞𝄢‧₊˚♪₊˚⊹˖ ♬⋆𝄞𝄢‧₊˚♪₊˚⊹˖ ♬⋆", SwingConstants.CENTER);
         lblInfo.setForeground(Color.WHITE);
         lblInfo.setFont(new Font("Dialog", Font.BOLD, 14));
         
@@ -153,6 +153,6 @@ public class VentanaPrincipal extends JFrame {
     public void limpiarInfo() {
         lblInfo.setText("STOPPED");
         lblImagen.setIcon(null);
-        lblImagen.setText(" ☆");
+        lblImagen.setText("♪♫~");
     }
 }
